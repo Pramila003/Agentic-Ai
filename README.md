@@ -1,75 +1,72 @@
 # Agentic AI Workflows
 
-This repository contains a set of small LangGraph-based notebooks that demonstrate agentic AI patterns, workflow orchestration, and structured LLM outputs. Each notebook focuses on a different use case and can be opened and run independently in VS Code or Jupyter.
+This repository contains a collection of small LangGraph notebooks that demonstrate agentic AI patterns, state-based orchestration, and structured LLM workflows. The examples are designed for learning and experimentation in VS Code or Jupyter Notebook.
 
 ## Project structure
 
-- `simple_llm_workflow.ipynb` — basic LLM-driven workflow using Groq
-- `bmi_workflow.ipynb` — deterministic workflow that calculates BMI and assigns a category
-- `quadratic_eq_conditnflow.ipynb` — conditional workflow that evaluates a quadratic equation and routes based on the discriminant
-- `cricket_workflow_paralle.ipynb` — cricket analytics workflow that computes batting metrics in a state-based graph
-- `UPSC_workflow_parallel.ipynb` — a parallel evaluation workflow for grading UPSC-style essays using structured model output
-- `requirements.txt` — Python dependencies needed for the notebooks
-- `env.example` — sample environment file for the Groq API key
-- `.env` — local environment file created by the user to store `GROQ_API_KEY` (not committed)
+- `Workflow/` — basic workflow examples
+  - `bmi_workflow.ipynb` — deterministic BMI calculator workflow
+  - `simple_llm_workflow.ipynb` — simple LLM-driven LangGraph example
+- `conditional_workflow/` — conditional branching examples
+  - `quadratic_eq_conditnflow.ipynb` — quadratic equation solver with branching logic
+  - `Review_conditionalflow.ipynb` — review/extension notebook for conditional flow patterns
+- `paralle_workflow/` — parallel and structured-evaluation examples
+  - `cricket_workflow_paralle.ipynb` — parallel cricket analytics workflow
+  - `UPSC_workflow_parallel.ipynb` — parallel essay evaluation workflow
+- `Iterative_workflow/` — iterative workflow example
+  - `post_generation.ipynb` — notebook for iterative generation-style tasks
+- `requirements.txt` — Python dependencies for the notebooks
+- `env.example` — template for local environment variables
+- `.env` — local environment file containing your API key (not committed)
 
-## Included workflows
+## Included workflow examples
 
 ### 1. Simple LLM workflow
-`simple_llm_workflow.ipynb` demonstrates a lightweight LangGraph application that:
+The `Workflow/simple_llm_workflow.ipynb` notebook shows a minimal LangGraph pipeline that:
 
 - loads environment variables from `.env`
-- connects to Groq using `ChatGroq`
-- creates a state graph
-- passes user input through a language model and returns a result
+- connects to Groq through `ChatGroq`
+- creates a stateful graph
+- passes user input through the model and returns a result
 
-This is the easiest example to start with when learning LangGraph and LLM integration.
+This is the best place to start if you are learning LangGraph basics.
 
 ### 2. BMI workflow
-`bmi_workflow.ipynb` shows a simple workflow built around a typed state:
+The `Workflow/bmi_workflow.ipynb` notebook demonstrates a deterministic workflow that:
 
-- accepts weight and height
+- accepts height and weight
 - calculates BMI
-- classifies the result as underweight, normal, overweight, or obese
-- uses a graph structure to move from one computation step to the next
+- classifies the result into a health category
+- moves through graph nodes in a structured sequence
 
-This is a clear example of state-driven orchestration without any external API dependency.
+This example is useful for understanding typed state and sequential orchestration without external APIs.
 
-### 3. Quadratic equation workflow
-`quadratic_eq_conditnflow.ipynb` demonstrates conditional branching in LangGraph for solving quadratic equations:
+### 3. Conditional workflow
+The `conditional_workflow/quadratic_eq_conditnflow.ipynb` notebook explores branching logic in LangGraph by:
 
-- accepts coefficients `a`, `b`, and `c`
-- calculates the discriminant
-- decides whether the equation has real roots, repeated roots, or no real roots
-- routes execution through different graph nodes based on the computed result
+- taking coefficients `a`, `b`, and `c`
+- calculating the discriminant
+- determining whether a solution is real, repeated, or nonexistent
+- routing execution through different graph paths based on the result
 
-This workflow is a good introduction to conditional graph edges and state-based decision logic.
+This is a practical introduction to conditional edges and graph-based decision logic.
 
-### 4. Cricket workflow
-`cricket_workflow_paralle.ipynb` explores cricket match analytics using a parallel state graph:
+### 4. Parallel workflow examples
+The notebooks in `paralle_workflow/` show how separate tasks can run within a common graph:
 
-- reads batting inputs such as runs, balls, fours, and sixes
-- calculates strike rate
-- computes boundary per ball and boundary percentage
-- produces a summary of the batting performance
+- `cricket_workflow_paralle.ipynb` calculates batting metrics such as strike rate and boundary percentage
+- `UPSC_workflow_parallel.ipynb` evaluates essay quality using structured model output and parallel scoring logic
 
-This workflow is useful for understanding how multiple calculations can run as separate nodes in one graph.
+These examples are useful when learning multi-step or parallel agent patterns.
 
-### 5. UPSC essay evaluation workflow
-`UPSC_workflow_parallel.ipynb` is a more advanced workflow that uses structured outputs for evaluation:
-
-- loads an LLM model through Groq
-- defines a schema for essay feedback and score
-- evaluates an essay for strengths, weaknesses, and a numeric score
-- uses LangGraph states to orchestrate a structured evaluation pipeline
-
-This notebook is best for users exploring agentic evaluation systems and model-based scoring.
+### 5. Iterative workflow
+The `Iterative_workflow/post_generation.ipynb` notebook provides an example of iterative generation or follow-up workflow execution, helping illustrate how an agent can build on prior outputs in multiple stages.
 
 ## Prerequisites
 
 - Python 3.10+
-- Jupyter Notebook or VS Code with Python/Jupyter extension
-- Access to a Groq API key for the LLM-based notebooks
+- Jupyter Notebook or VS Code with Python and Jupyter support
+- Internet access and a Groq API key for the LLM-based notebooks
 
 ## Setup
 
@@ -80,19 +77,19 @@ This notebook is best for users exploring agentic evaluation systems and model-b
    .venv\Scripts\Activate.ps1
    ```
 
-2. Install dependencies:
+2. Install the project dependencies:
 
    ```powershell
    pip install -r requirements.txt
    ```
 
-   If a notebook requires Groq and it is not already installed, install it separately:
+   If you plan to run the Groq-based notebooks, install the Groq integration package as well:
 
    ```powershell
    pip install langchain-groq
    ```
 
-3. Create your environment file:
+3. Copy the sample environment file:
 
    ```powershell
    Copy-Item env.example .env
@@ -104,25 +101,25 @@ This notebook is best for users exploring agentic evaluation systems and model-b
    GROQ_API_KEY=your_api_key_here
    ```
 
-   Never commit the `.env` file or share your API key publicly.
+   Do not commit `.env` or share your API key publicly.
 
 ## Running the notebooks
 
-Open any notebook in Jupyter or VS Code and run the cells in order.
+Open a notebook in Jupyter or VS Code and run the cells in order.
 
-Typical flow:
+Typical workflow:
 
 ```powershell
 jupyter notebook
 ```
 
-Then select the notebook you want to run from the Jupyter interface.
+Then open the notebook you want to run in the browser or editor.
 
 ## Notes
 
-- The notebooks are designed as learning examples and demonstration workflows.
-- Not all notebooks require API access; the BMI, cricket, and quadratic examples work as pure Python/LangGraph workflows.
-- The LLM-based workflows depend on Groq credentials and internet connectivity.
+- The repository is intended as a learning sandbox for agentic workflows.
+- Some notebooks are deterministic and do not require external APIs.
+- The LLM-powered examples depend on Groq access and an active API key.
 
 ## License
 
