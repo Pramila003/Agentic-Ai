@@ -2,22 +2,6 @@ import streamlit as st
 from langchain_core.messages import AnyMessage, HumanMessage    
 from langgrapg_backned import chatbot 
 
-# with st.chat_message('user'):
-#     st.text('hi')
-
-# with st.chat_message("assistant"):
-#     st.text("how are you?")
-    
-# user_input=st.chat_input("Type here")
-# if user_input:
-#     with st.chat_message("user"):
-#         st.text(user_input)
-        
-# if user_input:
-#     with st.chat_message("assistant"):
-#         st.text(user_input)
-
-
 CONFIG={"configurable":{"thread_id":'thread-1'}}
 
 if "message_history" not in st.session_state:
