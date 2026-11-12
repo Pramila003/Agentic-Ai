@@ -163,3 +163,6 @@ Then run the command again.
 ## License
 
 This project is intended for educational and experimentation purposes.
+
+## to run the sqlitememory saver
+ python .\chatbot_sqliteMemory\langgraph_database.py
